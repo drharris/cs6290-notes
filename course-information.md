@@ -9,7 +9,7 @@ sidebar_label: Course Information
 Complete the prerequisite check at [HPC0](https://classroom.udacity.com/courses/ud219/)
 
 ## Textbook
-There are no required readings. For personal knowledge, a recommended textbook is Computer Architecture, by Hennessy and Patterson. This is available electronically via the GT Library (https://ebookcentral-proquest-com.prx.library.gatech.edu/lib/gatech/detail.action?docID=787253).
+There are no required readings. For personal knowledge, a recommended textbook is **Computer Architecture** by Hennessy and Patterson. [This textbook is available electronically via the GT Library](https://ebookcentral-proquest-com.prx.library.gatech.edu/lib/gatech/detail.action?docID=787253).
 
 ## Sample Tests
 ### Sample Midterms
