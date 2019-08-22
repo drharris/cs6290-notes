@@ -4,7 +4,7 @@ title: Introduction
 sidebar_label: Introduction
 ---
 
-[Lecture on Udacity](https://classroom.udacity.com/courses/ud007/lessons/3627649022/concepts/last-viewed)
+[🔗Lecture on Udacity](https://classroom.udacity.com/courses/ud007/lessons/3627649022/concepts/last-viewed)
 
 ## Computer Architecture
 
