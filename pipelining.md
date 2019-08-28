@@ -68,3 +68,54 @@ We estimate that:
 On a 5-stage CPI, CPI = 1 + 0.1*2 = 1.2 (10% of the time (50% * 20%) an instruction spends two extra cycles)
 
 With a deeper pipeline (more stages), the number of wasted instructions increases.
+
+## Data Dependencies
+
+```mipsasm
+    ADD R1, R2, R3
+    SUB R7, R1, R8
+    MUL R1, R5, R6
+```
+
+This program has 3 dependencies:
+
+1. Lines 1 and 2 have a RAW (Read-After-Write) dependence on R1 (also called Flow dependence, or TRUE dependence). The `ADD` instruction must be completed before the `SUB` instruction.
+
+2. Lines 1 and 3 have a WAW (Write-After-Write) dependence on R1 with the `MUL` instruction in which the `ADD` must complete first, else R1 is overwritten with an incorrect value. This is also called an Output dependence.
+
+3. Lines 2 and 3 have a WAR (Write-After-Read) dependence on R1 in that the `SUB` instruction must use the value of R1 before the `MUL` instruction overwrites it. This is also called an Anti-dependence because it reverses the order of the flow dependence.
+
+WAW and WAR dependencies are also called "False" or "Name" dependencies. RAR (Read-After-Read) dependencies do not matter since the value could not have changed in-between and is thus safe to read.
+
+### Data Dependencies Quiz
+
+(Included for additional study help). For the following program, select which dependencies exist:
+
+```mipsasm
+    MUL R1, R2, R3
+    ADD R4, R4, R1
+    MUL R1, R5, R6
+    SUB R4, R4, R1
+```
+
+|   | RAW | WAR | WAW |
+|---|---|---|---|
+| \\( I1 \rightarrow I2 \\) | x | - | - |
+| \\( I1 \rightarrow I3 \\) | - | - | x |
+| \\( I1 \rightarrow I4 \\) | - | - | - |
+| \\( I2 \rightarrow I3 \\) | - | x | - |
+
+## Dependencies and Hazards
+
+Dependence - property of the program alone.
+
+Hazard - when a dependence results in incorrect execution.
+
+For example, in a 5-stage pipeline, a dependency that is 3 instructions apart may not cause a hazard, since the result will be written before the dependent instruction reads it. 
+
+## Handling of Hazards
+
+First, detect hazard situations. Then, address it by:
+1. Flush dependent instructions
+2. Stall dependent instruction
+3. Fix values read by dependent instructions
