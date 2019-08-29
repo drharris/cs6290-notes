@@ -8,7 +8,7 @@ sidebar_label: Welcome to HPCA
 
 Here are my notes from when I am taking HPCA in OMSCS during Fall 2019.
 
-Each document in "Lecture Notes" corresponds to a lesson in [Udacity](https://classroom.udacity.com/courses/ud007). Within each document, the headings correspond to the videos within that lesson. Usually, I omit the lesson intro videos.
+Each document in "Lecture Notes" corresponds to a lesson in [Udacity](https://classroom.udacity.com/courses/ud007). Within each document, the headings roughly correspond to the videos within that lesson. Usually, I omit the lesson intro videos.
 
 There is a lot of information in these documents. I hope you find it helpful!
 

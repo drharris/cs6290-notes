@@ -119,3 +119,20 @@ First, detect hazard situations. Then, address it by:
 1. Flush dependent instructions
 2. Stall dependent instruction
 3. Fix values read by dependent instructions
+
+Must use flushes for control dependencies, because the instructions that come after the hazard are the wrong instructions.
+
+For data dependence, we can stall the next instruction, or fix the instruction by forwarding the value to the correct stage of the pipeline (e.g. "keep" the value inside the ALU stage for the next instruction to use). Forwarding does not always work, because the value we need is produced at a later point in time. In this cases we must stall.
+
+## How Many Stages?
+
+For an ideal CPI = 1, we consider the following:
+
+More Stages \\( \rightarrow \\) more hazards (CPI \\( \uparrow \\)), but less work per stage ( cycle time \\( \downarrow \\))
+
+From iron law, Execution Time = # Instructions * CPI * Cycle Time
+
+\# Stages should be chosen to balance CPI and Cycle time (some local minima for execution time where cycle time has decreased without causing additional hazards). Additionally consider more stages consumes more power (work being done in less cycle time with more latches per stage). 
+
+* Performance (execution time) \\( \Rightarrow \\) 30-40 stages
+* Manageable Power Consumption \\( \Rightarrow \\) 10-15 stages
