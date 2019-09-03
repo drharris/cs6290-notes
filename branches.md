@@ -72,4 +72,31 @@ Accuracy:
 | 14-stages<br>(11th stage) | \\(1 + 0.12\*10\\)<br>\\(CPI = 2.2\\) | \\(1 + 0.01\*10\\)<br>\\(CPI = 1.1\\) | \\(2\\) |
 | 11th stage<br>(4 inst/cycle) | \\(0.25 + 0.12\*10\\)<br>\\(CPI = 1.45\\) | \\(0.25 + 0.01\*10\\)<br>\\(CPI = 0.35\\) | \\(4.14\\) |
 
-If we have a deeper pipeline or are able to execute more instructions per cycle, the better predictor is more important than in simpler processors.
+If we have a deeper pipeline or are able to execute more instructions per cycle, the better predictor is more important than in simpler processors, because the cost of misprediction is much higher (more instructions lost with a misprediction).
+
+## Better Prediction - How?
+
+Predictor must compute \\(PC_{next}\\) based only on knowledge of \\(PC_{now}\\). This is not much information to decide on. It would help if we knew: 
+* Is it a branch?
+* Will it be taken?
+* What is the offset field of the instruction?
+
+But we don't know any of these because we're still fetching the instruction. We do, however, know the history of how \\(PC_{now}\\) has behaved in the past. So, we can go from: \\(PC_{next} = f(PC_{now})\\) to:
+
+$$ PC_{next} = f(PC_{now}, history[PC_{now}]) $$
+
+## BTB - Branch Target Buffer
+
+The predictor can take the \\(PC_{now}\\) and uses it to index into a table called the BTB, with the output of our best guess at next PC. Later, when the branch executes, we know the actual \\(PC_{next}\\) and can compare with the predicted one. If it doesn't match, then it is handled as a misprediction and the BTB can be updated.
+
+![Branch Target Buffer](https://i.imgur.com/h6Fwke1.png)
+
+One problem: How big does the BTB need to be? We want it to have single cycle latency (small). However, it needs to contain an entire 64-bit address and we one entry for each PC we can fetch. Thus, the BTB would need to be as large as the program itself. How do we make it smaller?
+
+## Realistic BTB
+
+First, we don't need an entry for every possible PC. It's enough if we have entries for any PC likely to execute soon. For example, in a loop of 100 instructions, it's enough to have about a 100-length BTB.
+
+Perhaps we find through testing that a 1024-entry BTB can still be accessed in one cycle. How do we map 64-bit PCs to this 1024 entry table, keeping in mind any delay in calculating the mapping from PC to BTB index would then shorten the BTB further to compensate.
+
+The way we do this is by simply taking the last 10 bits (in the 1024 case). While this means future instructions will eventually overwrite the BTB entries for the current instructions, this ensures instructions located around each other are all mapping to the BTB during execution. This particularly applies to better predicting branch behavior in loops or smaller programs.

@@ -40,4 +40,14 @@ There are no required readings. For personal knowledge, a recommended textbook i
 * [Assembly Language Programming](https://www.udacity.com/wiki/hpca/assemblyLanguageProgramming)
 * [Linux/Unix Commands](https://www.udacity.com/wiki/hpca/reviewLinuxCommands)
 * [C++](https://www.udacity.com/wiki/hpca/reviewC++)
-* [Glossary](https://www.udacity.com/wiki/hpca/reviewC++)
+* [Glossary](https://www.udacity.com/wiki/hpca/glossary/Glossary)
+
+## External Lectures and Materials
+
+These are some links I personally found helpful to explain some of the course concepts.
+
+* Branch Handling and Branch Prediction - CMU Computer Architecture (Prof. Onur Mutlu)
+  * [2014 Video](https://www.youtube.com/watch?v=06OAhsPL-1k), [2013 Video](https://www.youtube.com/watch?v=XkerLktFtJg), [Slides](http://course.ece.cmu.edu/~ece447/s13/lib/exe/fetch.php?media=onur-447-spring13-lecture11-branch-prediction-afterlecture.pdf)
+
+
+
