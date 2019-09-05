@@ -100,3 +100,18 @@ First, we don't need an entry for every possible PC. It's enough if we have entr
 Perhaps we find through testing that a 1024-entry BTB can still be accessed in one cycle. How do we map 64-bit PCs to this 1024 entry table, keeping in mind any delay in calculating the mapping from PC to BTB index would then shorten the BTB further to compensate.
 
 The way we do this is by simply taking the last 10 bits (in the 1024 case). While this means future instructions will eventually overwrite the BTB entries for the current instructions, this ensures instructions located around each other are all mapping to the BTB during execution. This particularly applies to better predicting branch behavior in loops or smaller programs.
+
+If instructions are word-aligned, the last two bits will always be `0b00`. Therefore we can ignore those and index using bits 12-2 in the 1024 case.
+
+## Direction Predictor
+The BHT is used like the BTB, but the entry is a single bit that tells us whether a PC is:
+- [0] not a taken branch (PC++)
+- [1] a taken branch (use BTB)
+
+The entries are accessed by least insignificant bits of PC (e.g. 12-2 in 1024 case). Once the branch resolves we can update BHT accordingly. Because this table is very small in terms of data, it can be much larger in terms of entries.
+
+*[ALU]: Arithmetic Logic Unit
+*[CPI]: Cycles Per Instruction
+*[PC]: Program Counter
+*[BTB]: Branch Target Buffer
+*[BHT]: Branch History Table

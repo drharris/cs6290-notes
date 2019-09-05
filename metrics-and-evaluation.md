@@ -158,3 +158,6 @@ Example:
 Consequence of Amdahl's law. If you keep trying to improve the same area, you get diminishing returns on the effort. Always reconsider what is now the dominant part of the execution time. 
 
 ![Diminishing Returns](https://i.imgur.com/SzjXnRS.png)
+
+*[IPS]: Instructions per Second
+*[CPI]: Cycles per Instruction

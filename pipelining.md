@@ -136,3 +136,11 @@ From iron law, Execution Time = # Instructions * CPI * Cycle Time
 
 * Performance (execution time) \\( \Rightarrow \\) 30-40 stages
 * Manageable Power Consumption \\( \Rightarrow \\) 10-15 stages
+
+*[ALU]: Arithmetic Logic Unit
+*[CPI]: Cycles Per Instruction
+*[PC]: Program Counter
+*[RAW]: Read-After-Write
+*[WAR]: Write-After-Read
+*[WAW]: Write-After-Write
+*[RAR]: Read-After-Read

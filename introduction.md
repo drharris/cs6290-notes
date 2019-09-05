@@ -33,7 +33,7 @@ Used to predict technology trends. Every 18-24 months, you get 2x transistors fo
 
 ### Memory Wall
 
-Consequence of Moore's Law. IPS (instructions/sec) and Capacity double every 2 years. If Latency only improves 1.1x every two years, there is a gap between latency and speed/capacity, called the Memory Wall. Caches are used to fill in this gap.
+Consequence of Moore's Law. IPS and Capacity double every 2 years. If Latency only improves 1.1x every two years, there is a gap between latency and speed/capacity, called the Memory Wall. Caches are used to fill in this gap.
 
 ![Memory Wall Graph](https://i.imgur.com/RMSndOW.png)
 
@@ -86,3 +86,5 @@ Fabrication cost example: If a wafer costs $5000, and has approximately 10 defec
 Benefit from Moore's Law in two ways:
 * Smaller \\( \Rightarrow \\) much lower cost
 * Same Area \\( \Rightarrow \\) faster for same cost
+
+*[IPS]: Instructions per Second
