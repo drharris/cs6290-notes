@@ -78,6 +78,21 @@ MOVZ X, R2, R3
 
 Similarly in x86 there are many instructions (`CMOVZ`, `CMOVNZ`, `CMOVGT`, etc.) that operate based on the flags, where the move operation completes based on the condition codes provided.
 
+## MOVZ/MOVN Performance
+Is the If-Conversion really faster? Consider the following example. The branched loop can average 10.5 instructions given a large penalty. The If-Converted form uses more instructions to do the work, but never receives a penalty, for an average of 4 instructions.
+
+![MOVZ/MOVN Performance](https://i.imgur.com/GXWFIvL.png)
+
+## Full Predication HW Support
+
+For MOV_cc we need separate opcode. For Full Predication, we add condition bits to _every_ instruction. For example, the Itanium instruction has 41 bits, where the least significant 6 bits specify a "qualifying predicate". The predicates are actually small 1-bit registers, and the 6 bit code tells the processor which of the 64-bit conditional registers to use.
+
+## Full Predication Example
+In this example, the same code as before is now using a predication construct. So, `MP.EQZ` sets up predicates `p1` and `p2`. The `ADDI` instructions then use the proper predicate to determine if it is done or not. This avoids needing extra registers, special instruction codes, etc.
+
+![Full Predication Example](https://i.imgur.com/o1uPWqN.png)
+
+
 
 *[2BP]: 2-bit Predictor
 *[2BC]: 2-Bit Counter
