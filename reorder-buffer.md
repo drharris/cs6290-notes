@@ -85,6 +85,105 @@ Reminder: two scenarios:
 
 [🎥 Video explanation](https://www.youtube.com/watch?v=vpPjDW48v90). The main point is that ROB makes it so the processor itself may see instructions executed in any order with mispredicted branches, but the programmer's view of the program's execution is that all instructions are committed in order with no wrong branches taken.
 
+## RAT Updates on Commit
+
+[🎥 Video explanation](https://www.youtube.com/watch?v=PYFg7QOfcvI). This example walks through how the ROB, RAT, and REGS work together during the commit phase. At a basic level, as instructions in the ROB are completed, it updates the register values accordingly. However, it will only update the RAT (to change its pointer from a ROB entry to a Register) if it just committed the ROB instruction the RAT entry was pointing to. For example, if the RAT entry for `R3` was pointing to `ROB2`, when `ROB2` executes it will commit the update to the associated register, and also update the RAT entry `R3` to point to `R3` now. In this way, registers and RAT are both kept updated only when the instruction is finally committed.
+
+## ROB Example
+_These examples are best viewed as videos, so links are below..._
+
+1. [🎥 Cycles 1-2](https://www.youtube.com/watch?v=39AFF5Qq5DI)
+2. [🎥 Cycles 3-4](https://www.youtube.com/watch?v=c3hFm_DOUA0)
+3. [🎥 Cycles 5-6](https://www.youtube.com/watch?v=4nZN_mLcCJo) 
+4. _(cycles 7-12 are "fast forwarded")_
+5. [🎥 Cycles 13-24](https://www.youtube.com/watch?v=bE3IFvoChyw)
+6. [🎥 Cycles 25-43](https://www.youtube.com/watch?v=HmURweRTsU4)
+7. [🎥 Cycles 44-48](https://www.youtube.com/watch?v=V0nywwV0lKU)
+8. [🎥 Timing Example](https://www.youtube.com/watch?v=f9IcEtKTz8k)
+
+## Unified Reservation Stations
+
+With separate RS for separate units (e.g. ADD, MUL), often running out of RS spots on one unit will prevent the other unit from being issued too (because instructions must be issued in order). The structures themselves are functionally the same, so all RS can be unified into one larger array, to allow more total instructions to be issued. However, this requires additional logic in the dispatch unit to target the correct unit. But, reservation stations are expensive, so it may be better to add the additional logic rather than having stations go unused.
+
+## Superscalar
+
+Previous examples were limited to one instruction per cycle. For superscalar, we need to consider the following:
+* Fetch > 1 inst/cycle
+* Decode > 1 inst/cycle
+* Issue > 1 inst/cycle (still should be in order)
+* Dispatch > 1 inst/cycle
+  * May require multiple units of each functional type
+* Broadcast > 1 result/cycle
+  * This involves not only having more buses for each result, but every RS has to compare with every bus each cycle
+* Commit > 1 inst/cycle
+  * Must still obey rule of in-order commits
+
+With all of these, we must consider the "weakest link". If all of these are very large but one is limited to 3 inst/cycle, that will be the bottleneck in the pipeline.
+
+## Termninology Confusion
+
+| Academics | Companies, other papers |
+| --- | --- |
+| Issue | Issue, Allocate, Dispatch |
+| Dispatch | Execute, Issue, Dispatch |
+| Commit | Commit, Complete, Retire, Graduate |
+
+So, it's complicated.
+
+## Out of Order
+
+In an out-of-order processor, not ALL pipeline stages are processing instructions out of order. Some stages must still be in-order to preserve proper dependencies.
+
+| Stage | Order |
+| --- | --- |
+| Fetch | In-Order |
+| Decode | In-Order |
+| Issue | In-Order |
+| Execute | Out-of-Order |
+| Write/Bcast | Out-of-Order |
+| Commit | In-Order |
+
+
+## Additional Resources
+
+From TA Nolan, here is an attempt to document how a CPU with ROB works:
+
+```
+While there is an instruction to issue
+	If there is an empty ROB entry and an empty appropriate RS
+		Put opcode into RS.
+		Put ROB entry number into RS.
+		For each operand which is a register
+			If there is a ROB entry number in the RAT for that register
+				Put the ROB entry number into the RS as an operand.
+			else
+				Put the register value into the RS as an operand.
+		Put opcode into ROB entry.
+		Put destination register name into ROB entry.
+		Put ROB entry number into RAT entry for the destination register.
+		Take the instruction out of the instruction window.
+		
+For each RS
+	If RS has instruction with actual values for operands
+		If an appropriate ALU or processing unit is free
+			Dispatch the instruction, including operands and the ROB entry number.
+			Free the RS.
+
+While the next ROB entry to be retired has a result
+	Write the result to the register.
+	If the ROB entry number is in the RAT, remove it.
+	Free the ROB entry.
+
+For each ALU
+	If the instruction is complete
+		Put the result into the ROB entry corresponding to the destination register.
+		For each RS waiting for it
+			Put the result into the RS as an operand.
+		Free the ALU.
+```
+
+
+
 
 *[ALU]: Arithmetic Logic Unit
 *[CPI]: Cycles Per Instruction

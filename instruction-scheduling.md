@@ -126,7 +126,89 @@ _These examples are best viewed as videos, so links are below..._
 6. [🎥 Cycles 10-end](https://www.youtube.com/watch?v=ZQ6Tdrs16_U)
 7. [🎥 Timing Example](https://www.youtube.com/watch?v=ZqbhHjFSBoI)
 
+## Additional Resources
 
+From TA Nolan, here is a list of things that can prevent a CPU from moving forward with an instruction.
+```
+Issue:
+	Instructions must be issued in order.
+	Only a certain number of instructions can be issued in one cycle.
+	An RS entry of the right type must be available.
+	An ROB entry must be available.
+	
+Dispatch:
+	The RS must have actual values for each operand.
+	An ALU or processing unit must be available.
+	Only a certain number of instructions from each RS can be dispatched in one cycle.
+	
+Execution:
+	No limitations.
+	
+Broadcast:
+	Only a certain number of instructions may broadcast in the same cycle.
+	
+Commit:
+	Instructions must be committed in order.
+	Only a certain number of instructions can be committed in one cycle.
+```
+
+Also from TA Nolan, an attempt to document how Tomasulo works
+
+```
+While there is an instruction to issue
+	If there is an empty appropriate RS entry
+		Put opcode into RS entry.
+		For each operand
+			If there is an RS number in the RAT
+				Put the RS number into the RS as an operand.
+			else
+				Put the register value into the RS as an operand.
+		Put RS number into RAT entry for the destination register.
+		Take the instruction out of the instruction window.
+		
+For each RS
+	If RS has instruction with actual values for operands
+		If the appropriate ALU or processing unit is free
+			Dispatch the instruction, including operands and the RS number.
+
+For each ALU
+	If the instruction is complete
+		If a RAT entry has #
+			Put value in corresponding register.
+			Erase RAT entry.
+		For each RS waiting for it
+			Put the result into the RS.
+		Free the ALU.
+		Free the RS.
+```
+
+Finally from TA Nolan, a worksheet to keep track of necessary information when approaching a problem with IS:
+```
+Same cycle:
+	free RS & use RS (?)
+	issue & dispatch (no)
+	capture & dispatch (no)
+        execute & broadcast (no)
+        reuse ROB (no)
+	
+# / cycle:
+	issue (1)
+	broadcast (1)
+
+Dispatch priority (oldest, random)
+	
+# of universal RS's: 
+
+ALU's:
+	operation	# RS's	# ALU's	  Pipelined?
+
+Exe time:
+	operation	cycles
+
+broadcast priority (slower ALU)
+
+# of ROB's: 
+```
 
 *[ALU]: Arithmetic Logic Unit
 *[CPI]: Cycles Per Instruction
