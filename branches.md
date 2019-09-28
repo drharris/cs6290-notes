@@ -4,7 +4,7 @@ title: Branches
 sidebar_label: Branches
 ---
 
-[🔗Lecture on Udacity](https://classroom.udacity.com/courses/ud007/lessons/3618489075/concepts/last-viewed)
+[🔗Lecture on Udacity (2.5 hr)](https://classroom.udacity.com/courses/ud007/lessons/3618489075/concepts/last-viewed)
 
 ## Branch in a Pipeline
 

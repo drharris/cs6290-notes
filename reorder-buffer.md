@@ -4,7 +4,7 @@ title: ReOrder Buffer
 sidebar_label: ReOrder Buffer
 ---
 
-[🔗Lecture on Udacity](https://classroom.udacity.com/courses/ud007/lessons/945398787/concepts/last-viewed)
+[🔗Lecture on Udacity (2 hr)](https://classroom.udacity.com/courses/ud007/lessons/945398787/concepts/last-viewed)
 
 ## Exceptions in Out Of Order Exceptions
 

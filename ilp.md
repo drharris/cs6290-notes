@@ -4,7 +4,7 @@ title: ILP
 sidebar_label: ILP
 ---
 
-[🔗Lecture on Udacity](https://classroom.udacity.com/courses/ud007/lessons/3615429333/concepts/last-viewed)
+[🔗Lecture on Udacity (54 min)](https://classroom.udacity.com/courses/ud007/lessons/3615429333/concepts/last-viewed)
 
 ## ILP All in the Same Cycle
 Ideal scenario is all instructions executing during the same cycle. This may work sometimes for some instructions, but typically there will be dependencies that prevent this, as below.

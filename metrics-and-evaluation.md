@@ -4,7 +4,7 @@ title: Metrics and Evaluation
 sidebar_label: Metrics and Evaluation
 ---
 
-[🔗Lecture on Udacity](https://classroom.udacity.com/courses/ud007/lessons/3650739106/concepts/last-viewed)
+[🔗Lecture on Udacity (45 min)](https://classroom.udacity.com/courses/ud007/lessons/3650739106/concepts/last-viewed)
 
 ## Performance
 

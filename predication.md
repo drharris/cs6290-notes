@@ -4,7 +4,7 @@ title: Predication
 sidebar_label: Predication
 ---
 
-[🔗Lecture on Udacity](https://classroom.udacity.com/courses/ud007/lessons/3617709440/concepts/last-viewed)
+[🔗Lecture on Udacity (30 min)](https://classroom.udacity.com/courses/ud007/lessons/3617709440/concepts/last-viewed)
 
 ## Predication
 Predication is another way we can try to deal with control hazards and dependencies by dividing the work into both directions.

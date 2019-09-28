@@ -4,7 +4,7 @@ title: Instruction Scheduling
 sidebar_label: Instruction Scheduling
 ---
 
-[🔗Lecture on Udacity](https://classroom.udacity.com/courses/ud007/lessons/3643658790/concepts/last-viewed)
+[🔗Lecture on Udacity (1.5 hr)](https://classroom.udacity.com/courses/ud007/lessons/3643658790/concepts/last-viewed)
 
 ## Improving IPC
 * ILP can be good, >> 1. 

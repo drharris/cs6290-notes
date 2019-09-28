@@ -4,7 +4,7 @@ title: Pipelining
 sidebar_label: Pipelining
 ---
 
-[🔗Lecture on Udacity](https://classroom.udacity.com/courses/ud007/lessons/3650589023/concepts/last-viewed)
+[🔗Lecture on Udacity (54 min)](https://classroom.udacity.com/courses/ud007/lessons/3650589023/concepts/last-viewed)
 
 Given a certain latency, the idea is that the first unit of work is achieved in the same period of time, but successive units continue to be completed thereafter. (Oil pipeline vs. traveling with a bucket)
 
