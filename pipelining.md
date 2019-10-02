@@ -65,7 +65,7 @@ We estimate that:
 - 20% of instructions are branch/jump
 - slightly more than 50% of all branch/jump instructions are taken
 
-On a 5-stage CPI, CPI = 1 + 0.1*2 = 1.2 (10% of the time (50% * 20%) an instruction spends two extra cycles)
+On a 5-stage pipeline, CPI = 1 + 0.1*2 = 1.2 (10% of the time (50% * 20%) an instruction spends two extra cycles)
 
 With a deeper pipeline (more stages), the number of wasted instructions increases.
 
