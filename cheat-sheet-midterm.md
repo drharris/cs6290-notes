@@ -20,18 +20,20 @@ Two kinds of power a processor consumes.
 
 * Latency (time start \\( \rightarrow \\) done)
 * Throughput (#/second) (not necessarily 1/latency due to pipelining)
-* Speedup - "X is N times faster than Y"
+* Speedup - "X is N times faster than Y" (X new, Y old)
   * Speedup = speed(X)/speed(Y)
-  * Speedup = throughput(X)/throughput(Y)
-  * Speedup = latency(Y)/latency(X) (notice Y/X reversal)
+  * Speedup = throughput(X)/throughput(Y) = IPC(X)/IPC(Y)
+  * Speedup = latency(Y)/latency(X) = \\(\frac{CPI(Y)\*CTime(Y)}{CPI(X)\*CTime(X)}\\) (notice Y/X reversal)
+    * Can also multiply by nInst(Y)/nInst(X) factor
 * Performance ~ Throughput ~ 1/Latency
 * Ratios (e.g. speedup) can only be calculated via geometric mean
   * \\(\text{geometric mean} = \sqrt[n]{a_1\*a_2\*...a_n}\\)
 * Iron Law of Performance:
   * **CPU Time** = (# instructions in the program) * (cycles per instruction) * (clock cycle time)
+    * clock cycle time = 1/freq
   * For unequal instruction times: \\(\sum_i (IC_i\* CPI_i) * \frac{\text{time}}{\text{cycle}}\\)
 * Amdahl's Law - overall effect due to partial change
-  * \\(speedup = \frac{1}{(1-frac_{enh}) + \frac{frac_{enh}}{speedup_{enh}}}\\)
+  * \\(speedup = [(1-frac_{enh}) + \frac{frac_{enh}}{speedup_{enh}}]^{-1}\\)
   * \\( frac_{enh} \\) represents the fraction of the execution **TIME**
   * Consider diminishing returns by improving the same area of code.
 
@@ -46,6 +48,7 @@ Two kinds of power a processor consumes.
 * Hazard - when a dependence results in incorrect execution
   * Handled by Flush, Stall, and Fix values
 * More Stages \\( \rightarrow \\) more hazards (CPI \\( \uparrow \\)), but less work per stage ( cycle time \\( \downarrow \\))
+* 5-stage pipeline: Fetch-Decode-Execute-Memory-Write
 
 ## Branch Prediction
 * Predictor must compute \\(PC_{next}\\) based only on knowledge of \\(PC_{now}\\)

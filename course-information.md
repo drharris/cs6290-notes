@@ -24,7 +24,12 @@ There are no required readings. For personal knowledge, a recommended textbook i
 * [Metrics and Evaluation Problem Set Solutions](https://www.udacity.com/wiki/hpca/Problem_Set_Solutions/MetricsAndEval)
 * [Pipelining Problem Set Solutions](https://www.udacity.com/wiki/hpca/Problem_Set_Solutions/Pipelining)
 * [Branches Problem Set Solutions](https://www.udacity.com/wiki/hpca/Problem_Set_Solutions/Branches)
-* [Predication Problem Set Solutions](https://www.udacity.com/wiki/hpca/Problem_Set_Solutions/Predication)
+* [Predication Problem Set Solutions](https://www.udacity.com/wiki/hpca/Problem_Set_Solutions/Predication) (links broken)
+  * [Problem 1](https://www.udacity.com/wiki/hpca/problem-set-solutions/predication/problem-1)
+  * [Problems 2-6](https://www.udacity.com/wiki/hpca/problem-set-solutions/predication/problem-2)
+  * [Problems 7-9](https://www.udacity.com/wiki/hpca/problem-set-solutions/predication/problem-3)
+  * [Problems 10-14](https://www.udacity.com/wiki/hpca/problem-set-solutions/predication/problem-4)
+  * [Problems 15-19](https://www.udacity.com/wiki/hpca/problem-set-solutions/predication/problem-5)
 * [ILP Problem Set Solutions](https://www.udacity.com/wiki/hpca/Problem_Set_Solutions/ILP)
 * [Instruction Scheduling Problem Set Solutions](https://www.udacity.com/wiki/hpca/Problem_Set_Solutions/Instruction_Scheduling)
 * [ReOrder Buffer Problem Set Solutions](https://www.udacity.com/wiki/hpca/Problem_Set_Solutions/ROB)
@@ -33,7 +38,7 @@ There are no required readings. For personal knowledge, a recommended textbook i
 * [Advanced Caches Problem Set Solutions](https://www.udacity.com/wiki/hpca/Problem_Set_Solutions/Advanced_Caches)
 * [Memory Problem Set Solutions](https://www.udacity.com/wiki/hpca/Problem_Set_Solutions/Memory)
 * [Multiprocessing Problem Set Solutions](https://www.udacity.com/wiki/hpca/Problem_Set_Solutions/Mulitprocessing)
-* [Memory Consistency Problem Set Solutions](https://www.udacity.com/wiki/hpca/Problem_Set_Solutions/Memory%20Consistency)
+* [Memory Consistency Problem Set Solutions](https://www.udacity.com/wiki/hpca/problem-set-solutions/memory-consistency)
 
 ## Additional Resources
 
