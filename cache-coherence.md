@@ -63,7 +63,7 @@ We can add a "Shared" bit to the block in cache that tells us if others are usin
 When a Write happens on a cache with Shared=1, it knows to broadcast that write on a bus, otherwise it will not. In this way, we get the Write-Update behavior when there is sharing, but otherwise we do not add extra traffic to the shared bus.
 
 ## Write-Invalidate Snooping Coherence
-This works similar to Write-Update with both opimizations (dirty/shared) applied. However, it differs in that instead of broadcasting the entire new value on every write, we only broadcast the fact that tag has been modified. Other caches containing that tag can simply unset their Valid bit. The next time that block is read from cache, it will force that cache to re-read, which is then answered by the cache with Dirty=0 or else the Memory.
+This works similar to Write-Update with both opimizations (dirty/shared) applied. However, it differs in that instead of broadcasting the entire new value on every write, we only broadcast the fact that tag has been modified. Other caches containing that tag can simply unset their Valid bit. The next time that block is read from cache, it will force that cache to re-read, which is then answered by the cache with Dirty=1 or else the Memory.
 
 The disadvantage with Write-Invalidate is that all readers have a cache miss when reading something previously written on another cache. But the advantage is that multiple writes don't force caches to continue updating blocks they may not need. Additionally, we know when a write is sending an invalidation, we can then unset the Shared bit (since we know all caches will have to re-read that block at some point), and thus reduce bus activity further.
 
